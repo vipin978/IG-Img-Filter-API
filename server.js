@@ -44,7 +44,7 @@ const dataBase = {
 //  / - root req
 
 app.get('/',(req,res)=>{
-  res.json(dataBase.users)
+  res.json("connected")
 })
 
 // /signin - signin request
