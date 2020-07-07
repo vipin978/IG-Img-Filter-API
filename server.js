@@ -81,13 +81,11 @@ app.post('/register',(req,res)=>{
   if(req.body.name !== ""){
 
     db('userdetails')
+    .returning('*')
     .insert({name:req.body.name,email:req.body.email,hash:hash})
-    .then(userid =>
-    db.select('name','email').from('userdetails').where('id', userid[0])
     .then(user => res.json(
       {name:user[0].name,status:"success"}
     ))
-  )
     .catch(err => res.status(400).json({status:err}))
   }
   else{
