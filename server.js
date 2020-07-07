@@ -8,7 +8,7 @@ const db = knex({
   client: 'pg',
   connection: {
     connectionString : process.env.DATABASE_URL,
-    ssl : true
+    ssl : true,
   }
 });
 
@@ -88,7 +88,7 @@ app.post('/register',(req,res)=>{
       {name:user[0].name,status:"success"}
     ))
   )
-    .catch(err => res.status(400).json({status:'Same mail id or user name'}))
+    .catch(err => res.status(400).json({status:err}))
   }
   else{
     res.status(400).json({status:'Enter details'})
