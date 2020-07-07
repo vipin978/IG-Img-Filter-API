@@ -48,6 +48,7 @@ app.get('/',(req,res)=>{
 // /signin - signin request
 
 app.post('/signin',(req,res)=>{
+  if (req.body.name !== ""){
     db.select('name','email','hash').from('userdetails').where('email','=',req.body.email)
     .then(user => {
       if(user.length === 0){
@@ -66,6 +67,10 @@ app.post('/signin',(req,res)=>{
       console.log(err);
     }
     )
+}
+else{
+  res.json({status:"Enter Details"})
+}
 })
 
 // /register - register request
