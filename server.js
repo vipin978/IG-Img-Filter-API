@@ -5,12 +5,10 @@ const cors = require('cors')
 const knex = require('knex')
 
 const db = knex({
-  client: 'mysql',
+  client: 'pg',
   connection: {
-    host : '127.0.0.1',
-    user : 'root',
-    password : 'password',
-    database : 'ig_filter'
+    host : process.env.DATABASE_URL,
+    ssl:true
   }
 });
 
