@@ -48,7 +48,7 @@ app.get('/',(req,res)=>{
 // /signin - signin request
 
 app.post('/signin',(req,res)=>{
-  if (req.body.name !== ""){
+  if (req.body.email !== ""){
     db.select('name','email','hash').from('userdetails').where('email','=',req.body.email)
     .then(user => {
       if(user.length === 0){
